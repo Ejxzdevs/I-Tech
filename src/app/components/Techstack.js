@@ -16,7 +16,14 @@ export default function Services() {
       icon: <Layout className="w-6 h-6" />,
       description:
         "Crafting immersive user interfaces and high-performance mobile experiences with a focus on responsiveness.",
-      skills: ["React", "Next.js", "Vue.js", "React Native", "TypeScript"],
+      skills: [
+        "React",
+        "Next.js",
+        "Vue.js",
+        "React Native",
+        "TypeScript",
+        "CSS/TW/BS",
+      ],
       color: "from-blue-500/20",
     },
     {
@@ -28,10 +35,8 @@ export default function Services() {
         "Node.js",
         "Laravel",
         "Vanilla PHP",
-        "Firebase",
-        "MongoDB",
-        "Supabase",
-        "SQL/PostgreSQL",
+        "NoSQL/Firebase/MongoDB",
+        "SQL/PostgreSQL/Supabase",
         "Redis",
       ],
       color: "from-emerald-500/20",
@@ -39,9 +44,8 @@ export default function Services() {
     {
       title: "Cloud & Deployment",
       icon: <CloudRain className="w-6 h-6" />,
-      description:
-        "Managing seamless CI/CD pipelines and deploying secure, high-availability cloud infrastructure.",
-      skills: ["Vercel", "Render", "Hostinger", "Docker"],
+      description: "Deploying secure, high-availability cloud infrastructure.",
+      skills: ["Vercel", "Render", "Hostinger"],
       color: "from-purple-500/20",
     },
     {
@@ -79,7 +83,6 @@ export default function Services() {
               Turning your vision into scalable digital reality.
             </motion.p>
           </div>
-
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -101,7 +104,7 @@ export default function Services() {
               whileHover={{ y: -5 }}
               className="group relative overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-8 hover:shadow-xl transition-all duration-300"
             >
-              {/* Subtle Gradient Glow */}
+              {/* Gradient Glow */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${service.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
               />
