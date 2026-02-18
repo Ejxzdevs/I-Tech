@@ -123,10 +123,10 @@ export default function Projects() {
                 key={index}
                 className="flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_40%] min-w-0"
               >
-                <div className="group relative h-[500px] rounded-[2.5rem] overflow-hidden bg-gray-200 dark:bg-gray-900 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20">
+                <div className="group relative h-125 rounded-[2.5rem] overflow-hidden bg-gray-200 dark:bg-gray-900 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20">
                   {/* Background Gradient */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-90 group-hover:scale-105 transition-transform duration-700`}
+                    className={`absolute inset-0 bg-linear-to-br ${project.color} opacity-90 group-hover:scale-105 transition-transform duration-700`}
                   />
 
                   {/* Content Overlay */}
