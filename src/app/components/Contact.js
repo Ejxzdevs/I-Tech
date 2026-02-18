@@ -147,7 +147,10 @@ export default function Contact() {
                     <select className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-gray-400 transition-all appearance-none cursor-pointer">
                       <option className="bg-gray-900">Web Development</option>
                       <option className="bg-gray-900">Mobile App</option>
-                      <option className="bg-gray-900">UI/UX Design</option>
+                      <option className="bg-gray-900">
+                        Mobile App & Web Development
+                      </option>
+                      <option className="bg-gray-900">AutoCad</option>
                       <option className="bg-gray-900">Other</option>
                     </select>
                   </div>
