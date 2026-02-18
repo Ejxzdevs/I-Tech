@@ -148,9 +148,9 @@ export default function Contact() {
                       <option className="bg-gray-900">Web Development</option>
                       <option className="bg-gray-900">Mobile App</option>
                       <option className="bg-gray-900">
-                        Mobile App & Web Development
+                        Mobile & Web Development
                       </option>
-                      <option className="bg-gray-900">AutoCad</option>
+                      <option className="bg-gray-900">Design & Drafting</option>
                       <option className="bg-gray-900">Other</option>
                     </select>
                   </div>
