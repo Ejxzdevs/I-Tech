@@ -1,9 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const form = useRef();
+  const [status, setStatus] = useState("idle");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setStatus("sending");
+
+    // Use environment variables for EmailJS configuration
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
+      () => {
+        setStatus("success");
+        form.current.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      },
+      (error) => {
+        console.error("EmailJS Error:", error.text);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      },
+    );
+  };
+
   return (
     <section id="contact" className="py-24 px-6 bg-white dark:bg-gray-950">
       <div className="max-w-6xl mx-auto">
@@ -16,18 +44,12 @@ export default function Contact() {
         >
           {/* Animated Background Accents */}
           <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.3, 0.2],
-            }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px]"
           />
           <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.1, 0.2, 0.1],
-            }}
+            animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
             transition={{
               duration: 10,
               repeat: Infinity,
@@ -52,7 +74,7 @@ export default function Contact() {
 
                 <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tighter">
                   Ready to scale <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-300">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-blue-300">
                     your business?
                   </span>
                 </h2>
@@ -62,59 +84,30 @@ export default function Contact() {
                   engines. Let&apos;s turn your vision into a digital reality.
                 </p>
 
-                <div className="space-y-8">
-                  <div className="flex items-center gap-5 group cursor-pointer">
-                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all duration-300 group-hover:scale-110">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-indigo-400 uppercase font-black tracking-widest mb-1">
-                        Email us
-                      </p>
-                      <p className="text-white font-semibold text-lg">
-                        itech@gmail.com
-                      </p>
-                    </div>
+                <div className="flex items-center gap-5 group cursor-pointer">
+                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all duration-300 group-hover:scale-110">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
                   </div>
-
-                  <div className="flex items-center gap-5 group cursor-pointer">
-                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all duration-300 group-hover:scale-110">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-indigo-400 uppercase font-black tracking-widest mb-1">
-                        Fast Response
-                      </p>
-                      <p className="text-white font-semibold text-lg">
-                        Within 24 Hours
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-[10px] text-indigo-400 uppercase font-black tracking-widest mb-1">
+                      Email us
+                    </p>
+                    <p className="text-white font-semibold text-lg">
+                      itech@gmail.com
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -123,6 +116,8 @@ export default function Contact() {
             {/* Right Side: The Form */}
             <div className="p-8 md:p-16">
               <motion.form
+                ref={form}
+                onSubmit={sendEmail}
                 initial={{ x: 20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
@@ -130,74 +125,87 @@ export default function Contact() {
                 className="space-y-6"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">
                       Name
                     </label>
                     <input
+                      name="name"
+                      required
                       type="text"
                       placeholder="John Doe"
                       className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-white transition-all placeholder:text-gray-600"
                     />
                   </div>
+
+                  {/* Subject Dropdown */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">
-                      Project Type
+                      Subject
                     </label>
-                    <select className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-gray-400 transition-all appearance-none cursor-pointer">
+                    <select
+                      name="title"
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-gray-400 transition-all appearance-none cursor-pointer"
+                    >
                       <option className="bg-gray-900">Web Development</option>
                       <option className="bg-gray-900">Mobile App</option>
                       <option className="bg-gray-900">
                         Mobile & Web Development
                       </option>
                       <option className="bg-gray-900">Design & Drafting</option>
-                      <option className="bg-gray-900">Other</option>
                     </select>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="john@company.com"
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-white transition-all placeholder:text-gray-600"
-                  />
-                </div>
-
+                {/* Message - Increased rows to 6 for better layout balance */}
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">
                     Message
                   </label>
                   <textarea
+                    name="message"
+                    required
                     placeholder="What are we building?"
-                    rows={4}
+                    rows={6}
                     className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none text-white transition-all placeholder:text-gray-600 resize-none"
                   ></textarea>
                 </div>
 
                 <motion.button
+                  type="submit"
+                  disabled={status === "sending"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-5 bg-indigo-600 hover:bg-indigo-500 text-white font-black uppercase tracking-[0.2em] text-xs rounded-2xl transition-all shadow-xl shadow-indigo-600/20 flex items-center justify-center gap-3 group"
+                  className={`w-full py-5 font-black uppercase tracking-[0.2em] text-xs rounded-2xl transition-all shadow-xl flex items-center justify-center gap-3 group ${
+                    status === "success"
+                      ? "bg-green-600 shadow-green-600/20"
+                      : status === "error"
+                        ? "bg-red-600 shadow-red-600/20"
+                        : "bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/20"
+                  } text-white`}
                 >
-                  Start Project
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  {status === "idle" && "Start Project"}
+                  {status === "sending" && "Sending..."}
+                  {status === "success" && "Message Sent!"}
+                  {status === "error" && "Try Again"}
+
+                  {status === "idle" && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  )}
                 </motion.button>
               </motion.form>
             </div>

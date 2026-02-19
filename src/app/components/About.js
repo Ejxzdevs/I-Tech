@@ -6,71 +6,110 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 px-6 bg-gray-50 dark:bg-gray-900/50 overflow-hidden"
+      className="py-24 px-6 bg-gray-50 dark:bg-gray-900 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side: Image/Visual with Scroll Animation */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col items-center text-center">
+          {/* Badge */}
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            className="px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-indigo-600 uppercase bg-indigo-50 dark:bg-indigo-900/30 rounded-full"
           >
-            <div className="relative z-10 overflow-hidden rounded-2xl bg-gray-200 dark:bg-gray-800 aspect-square lg:aspect-auto lg:h-[500px] shadow-2xl">
-              {/* Replace with your actual team photo or a symbolic graphic */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium italic p-8 text-center">
-                [Team Collaboration / Workspace Image]
-              </div>
+            Our Identity
+          </motion.span>
+
+          {/* Main Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-8 tracking-tight"
+          >
+            We are <span className="text-indigo-600">ITECH</span>
+          </motion.h2>
+
+          {/* Bio Paragraphs */}
+          <div className="space-y-6 max-w-3xl">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              A multidisciplinary collective of engineers and designers
+              dedicated to turning complex technical challenges into elegant,
+              high-impact digital and physical solutions.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed"
+            >
+              By merging technical precision with creative intuition, we help
+              businesses scale through robust backend architectures, immersive
+              front-end interfaces, and professional architectural drafting. Our
+              philosophy is simple: **Build for the future, design for the
+              user.**
+            </motion.p>
+          </div>
+
+          {/* Stats Bar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 border-y border-gray-200 dark:border-gray-800 py-10 w-full"
+          >
+            <div className="flex flex-col items-center">
+              <span className="text-4xl md:text-5xl font-bold text-indigo-600">
+                2+
+              </span>
+              <span className="mt-2 text-sm font-medium text-gray-500 uppercase tracking-widest">
+                Years of Innovation
+              </span>
             </div>
-            {/* Decorative background element */}
-            <div className="absolute -bottom-6 -right-6 -z-10 w-full h-full border-2 border-indigo-600 rounded-2xl"></div>
+
+            <div className="flex flex-col items-center">
+              <span className="text-4xl md:text-5xl font-bold text-indigo-600">
+                50+
+              </span>
+              <span className="mt-2 text-sm font-medium text-gray-500 uppercase tracking-widest">
+                Projects Delivered
+              </span>
+            </div>
+
+            <div className="flex flex-col items-center col-span-2 md:col-span-1 border-t md:border-t-0 pt-8 md:pt-0 border-gray-200 dark:border-gray-800">
+              <span className="text-4xl md:text-5xl font-bold text-indigo-600">
+                100%
+              </span>
+              <span className="mt-2 text-sm font-medium text-gray-500 uppercase tracking-widest">
+                Client Satisfaction
+              </span>
+            </div>
           </motion.div>
 
-          {/* Right Side: Content */}
+          {/* CTA/Button */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ delay: 0.6 }}
+            className="mt-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              About <span className="text-indigo-600">Us</span>
-            </h2>
-
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              We are a multidisciplinary team of creators and engineers
-              dedicated to turning complex technical challenges into elegant,
-              high-impact solutions. By merging our expertise in{" "}
-              <strong>Web & Mobile Development</strong> with the technical
-              precision of <strong>AutoCAD</strong> and{" "}
-              <strong>UI/UX Design</strong>, we build products that are as
-              robust as they are beautiful.
-            </p>
-
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-              Our philosophy is rooted in collaboration. Whether we are drafting
-              architectural plans or architecting scalable software, we focus on
-              user-centric results that push the boundaries of what is possible
-              in the digital and physical space.
-            </p>
-
-            {/* Stats/Quick Info Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-1">2+</h3>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Years of Innovation
-                </p>
-              </div>
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-3xl font-bold text-indigo-600 mb-1">50+</h3>
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                  Successful Deliveries
-                </p>
-              </div>
-            </div>
+            <a
+              href="#contact"
+              className="inline-flex items-center px-8 py-3 text-base font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors duration-300 shadow-lg shadow-indigo-200 dark:shadow-none"
+            >
+              Work With Us
+            </a>
           </motion.div>
         </div>
       </div>
