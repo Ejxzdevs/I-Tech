@@ -153,7 +153,7 @@ export default function ProfessionalShowcase() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   {/* Left Side: Mockup Frame (No full-bleed image) */}
                   <div className="lg:col-span-7 relative group">
-                    <div className="relative aspect-[16/10] bg-gray-200 dark:bg-zinc-900 rounded-3xl p-4 md:p-8 overflow-hidden border border-gray-200 dark:border-white/5 shadow-2xl">
+                    <div className="relative aspect-16/10 bg-gray-200 dark:bg-zinc-900 rounded-3xl p-4 md:p-8 overflow-hidden border border-gray-200 dark:border-white/5 shadow-2xl">
                       {/* Decorative background blobs for the frame */}
                       <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[80px] rounded-full" />
 
@@ -174,7 +174,7 @@ export default function ProfessionalShowcase() {
                       <span className="font-mono text-indigo-600 text-lg">
                         0{index + 1}
                       </span>
-                      <div className="h-[1px] w-12 bg-gray-300 dark:bg-zinc-800" />
+                      <div className="h-px w-12 bg-gray-300 dark:bg-zinc-800" />
                       <span className="text-gray-500 uppercase tracking-widest text-xs font-bold">
                         {project.year}
                       </span>
