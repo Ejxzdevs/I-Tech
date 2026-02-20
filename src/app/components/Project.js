@@ -111,7 +111,10 @@ export default function ProfessionalShowcase() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-24 dark:bg-[#050505] transition-colors duration-500">
+    <section
+      id="projects"
+      className="py-24 dark:bg-[#050505] transition-colors duration-500"
+    >
       <div className="max-w-7xl mx-auto px-6">
         {/* Header Section */}
         <div className="flex flex-col mb-16">

@@ -19,7 +19,7 @@ export default function Navbar() {
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
-    { name: "Stack", href: "#stack" },
+    { name: "Stack", href: "#services" },
   ];
 
   return (
